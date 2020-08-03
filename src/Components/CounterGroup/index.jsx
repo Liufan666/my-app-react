@@ -11,7 +11,15 @@ class CounterGroup extends React.Component {
         }
     }
 
-  
+    handleResize = (event) => {
+        if (event.target.value != this.state.size) {
+            this.setState({
+                size: event.target.value ? parseInt(event.target.value) : 0,
+                totalNumber: 0
+            });
+        }
+    }
+
     handleIncrease = (event) => {
         this.setState((prevState) => ({
             totalNumber: prevState.totalNumber + 1
