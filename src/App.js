@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Counter from './Components/Counter';
-import CounterGroup from './Components/CounterGroup';
+import CounterGroup from './ReduxComponents/CounterGroup';
+// import CounterGroup from './Components/CounterGroup';
 
 function App() {
   return (
