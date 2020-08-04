@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import store from '../../Redux/store'
-import {increaseAction,reduceAction} from '../../Redux/action'
+import { increaseAction, reduceAction } from '../../Redux/action'
 
 class Counter extends Component {
     constructor(props) {
@@ -36,28 +36,18 @@ class Counter extends Component {
         </div>
     }
 
-    // render() {
-    //     const { value, onIncrement, onDecrement } = this.props
-    //     return (
-    //         <p>
-    //             Clicked: {value} times
-    //             {' '}
-    //             <button onClick={onIncrement}>
-    //                 +
-    //     </button>
-    //             {' '}
-    //             <button onClick={onDecrement}>
-    //                 -
-    //     </button>
-    //         </p>
-    //     )
-    // }
+    static getDerivedStateFromProps(props, state) {
+        if (props.groupSize !== state.groupSize) {
+            return {
+                value: 0,
+                groupSize: props.groupSize
+            }
+        }
+        return null
+    }
+
 }
 
-Counter.propTypes = {
-    value: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired
-}
+
 
 export default Counter
