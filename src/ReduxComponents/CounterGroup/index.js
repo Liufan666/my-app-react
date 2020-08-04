@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Counter from '../Counter'
+import store from '../../Redux/store'
+import {initAction} from '../../Redux/action'
 class CounterGroup extends React.Component {
 
     constructor(props) {
@@ -17,6 +19,7 @@ class CounterGroup extends React.Component {
                 size: event.target.value ? parseInt(event.target.value) : 0,
                 totalNumber: 0
             });
+            store.dispatch(initAction())
         }
     }
 
@@ -33,40 +36,21 @@ class CounterGroup extends React.Component {
 
     }
 
-    // render() {
-    //     const intArray = [...Array(this.state.size).keys()]
-
-    //     return <div>
-    //         <label>
-    //             Group Size
-    //             <input onBlur={this.handleResize} ></input>
-    //         </label>
-    //         <label>
-    //             Total Number:{this.state.totalNumber}
-    //         </label>
-    //         {
-    //             intArray.map(key => <Counter onIncrease={this.handleIncrease} onDecrease={this.handleDecrease} groupSize={this.state.size} key={key} />)
-    //         }
-    //     </div>
-    // }
-
     render() {
-        const initArray = [...Array(this.state.size).keys()];
-        const { value, onIncrement, onDecrement } = this.props
-        return (
-            <div>
-                <label>
-                    Group Size:
-                            <input onBlur={this.handleResize} defaultValue={0}></input>
-                </label><br></br>
-                <label>
-                    Total Number: {this.state.totalNumber}
-                </label>
-                {
-                    initArray.map(key => <Counter onIncrease={this.handleIncrease} onDecrease={this.handleDecrease} key={key} value={value} />)
-                }
-            </div>
-        );
+        const intArray = [...Array(this.state.size).keys()]
+
+        return <div>
+            <label>
+                Group Size
+                <input onBlur={this.handleResize} ></input>
+            </label>
+            <label>
+                Total Number:{store.state}
+            </label>
+            {
+                intArray.map(key => <Counter  groupSize={this.state.size} key={key} />)
+            }
+        </div>
     }
 }
 

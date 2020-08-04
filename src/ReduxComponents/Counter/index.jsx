@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import store from '../../Redux/store'
+import {increaseAction,reduceAction} from '../../Redux/action'
 
 class Counter extends Component {
     constructor(props) {
@@ -14,14 +16,14 @@ class Counter extends Component {
         this.setState((prevState) => ({
             value: prevState.value + 1
         }))
-        this.props.onIncrement()
+        store.dispatch(increaseAction())
     }
 
     onDecrease = () => {
         this.setState((prevState) => ({
             value: prevState.value - 1
         }))
-        this.props.onDecrement()
+        store.dispatch(reduceAction())
     }
 
 

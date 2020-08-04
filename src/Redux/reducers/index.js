@@ -1,8 +1,8 @@
 export default (state = 0, action) => {
     switch (action.type) {
-        case 'INCREMENT':
+        case 'INCREASE':
             return state + 1
-        case 'DECREMENT':
+        case 'REDUCE':
             return state - 1
         case "INIT":
             return state = 0
