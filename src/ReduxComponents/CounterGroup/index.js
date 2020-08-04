@@ -23,21 +23,9 @@ class CounterGroup extends React.Component {
         }
     }
 
-    // handleIncrease = (event) => {
-    //     this.setState((prevState) => ({
-    //         totalNumber: prevState.totalNumber + 1
-    //     }));
-    // }
-
-    // handleDecrease = (event) => {
-    //     this.setState((prevState) => ({
-    //         totalNumber: prevState.totalNumber - 1
-    //     }));
-
-    // }
-
     render() {
         store.subscribe(() =>{
+            console.log("hello");
             this.setState({
                 value:store.getState()
             })
