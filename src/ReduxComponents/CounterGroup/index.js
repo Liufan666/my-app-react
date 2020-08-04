@@ -8,8 +8,8 @@ class CounterGroup extends React.Component {
         super(props);
         this.state = {
             size: 0,
-            totalNumber: 0,
-            sizeTime: 0
+            totalNumber: store.getState()
+            
         }
     }
 
@@ -23,20 +23,25 @@ class CounterGroup extends React.Component {
         }
     }
 
-    handleIncrease = (event) => {
-        this.setState((prevState) => ({
-            totalNumber: prevState.totalNumber + 1
-        }));
-    }
+    // handleIncrease = (event) => {
+    //     this.setState((prevState) => ({
+    //         totalNumber: prevState.totalNumber + 1
+    //     }));
+    // }
 
-    handleDecrease = (event) => {
-        this.setState((prevState) => ({
-            totalNumber: prevState.totalNumber - 1
-        }));
+    // handleDecrease = (event) => {
+    //     this.setState((prevState) => ({
+    //         totalNumber: prevState.totalNumber - 1
+    //     }));
 
-    }
+    // }
 
     render() {
+        store.subscribe(() =>{
+            this.setState({
+                value:store.getState()
+            })
+        })
         const intArray = [...Array(this.state.size).keys()]
 
         return <div>
@@ -45,7 +50,7 @@ class CounterGroup extends React.Component {
                 <input onBlur={this.handleResize} ></input>
             </label>
             <label>
-                Total Number:{store.state}
+                Total Number:{store.getState()}
             </label>
             {
                 intArray.map(key => <Counter  groupSize={this.state.size} key={key} />)

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import store from '../../Redux/store'
 import { increaseAction, reduceAction } from '../../Redux/action'
 
@@ -28,6 +27,7 @@ class Counter extends Component {
 
 
     render() {
+        
         const { value, onIncrement, onDecrement } = this.props
         return <div>
             <button onClick={this.onDecrease}>-</button>
