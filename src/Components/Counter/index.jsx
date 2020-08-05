@@ -31,11 +31,11 @@ class Counter extends React.Component {
         </div>
     }
 
-    static getDerivedStateFromProps(props,state){
-        if(props.groupSize !== state.groupSize){
-            return{
-                value:0,
-                groupSize:props.groupSize
+    static getDerivedStateFromProps(props, state) {
+        if (props.groupSize !== state.groupSize) {
+            return {
+                value: 0,
+                groupSize: props.groupSize
             }
         }
         return null

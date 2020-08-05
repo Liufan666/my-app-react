@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Counter from '../Counter'
 import store from '../../Redux/store'
-import {initAction} from '../../Redux/action'
+import { initAction } from '../../Redux/action'
 class CounterGroup extends React.Component {
 
     constructor(props) {
@@ -9,7 +9,7 @@ class CounterGroup extends React.Component {
         this.state = {
             size: 0,
             totalNumber: store.getState()
-            
+
         }
     }
 
@@ -24,10 +24,10 @@ class CounterGroup extends React.Component {
     }
 
     render() {
-        store.subscribe(() =>{
+        store.subscribe(() => {
             console.log("hello");
             this.setState({
-                value:store.getState()
+                value: store.getState()
             })
         })
         const intArray = [...Array(this.state.size).keys()]
@@ -41,7 +41,7 @@ class CounterGroup extends React.Component {
                 Total Number:{store.getState()}
             </label>
             {
-                intArray.map(key => <Counter  groupSize={this.state.size} key={key} />)
+                intArray.map(key => <Counter groupSize={this.state.size} key={key} />)
             }
         </div>
     }
